@@ -1,17 +1,83 @@
 import {
   IconChartBar,
   IconClipboardList,
+  IconDashboard,
   IconDeviceMobile,
   IconHome,
+  IconListCheck,
   IconPaletteOff,
   IconSettings,
+  IconUsers,
+  IconUsersGroup,
+  IconWifi,
 } from '@tabler/icons-react';
 
-export const navItems = [
-  { label: 'Home', icon: IconHome },
-  { label: 'Tasks', icon: IconClipboardList, active: true },
-  { label: 'Analytics', icon: IconChartBar },
-  { label: 'Settings', icon: IconSettings },
+export const sideNaveItems = [
+  { label: 'Home', icon: IconHome, href: '/' },
+  { label: 'Tasks', icon: IconClipboardList, active: true, href: '/tasks' },
+  { label: 'Analytics', icon: IconChartBar, href: '/analytics' },
+  { label: 'Settings', icon: IconSettings, href: '/settings' },
+];
+
+export const navLinks = [
+  { label: 'Features', href: '/features' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'About', href: '/about' },
+];
+
+export const plans = [
+  {
+    name: 'Free',
+    description: 'Core essentials for individuals',
+    price: '$0',
+    suffix: '/mo',
+    cta: 'Choose Free',
+    variant: 'outline',
+    features: [
+      'Up to 5 Projects',
+      'Basic Task Tracking',
+      'Mobile & Desktop Apps',
+      'Community Support',
+    ],
+  },
+  {
+    name: 'Pro',
+    description: 'Advanced productivity for pros',
+    price: '$12',
+    suffix: '/mo',
+    cta: 'Get Started',
+    popular: true,
+    variant: 'solid',
+    features: [
+      'Unlimited Projects',
+      'Advanced Analytics',
+      'Custom Workflow Templates',
+      'Priority Email Support',
+      'Integrations (Slack, Github)',
+    ],
+  },
+  {
+    name: 'Enterprise',
+    description: 'Team collaboration & security',
+    price: '$49',
+    suffix: '/mo',
+    cta: 'Contact Sales',
+    variant: 'outline',
+    features: [
+      'Custom Team Roles',
+      'SSO & SAML Security',
+      'Admin Dashboard',
+      '24/7 Dedicated Support',
+      'Custom API Access',
+    ],
+  },
+];
+
+export const faqs = [
+  'Can I upgrade or downgrade at any time?',
+  'Is there a free trial for the Pro plan?',
+  'What payment methods do you accept?',
+  'Do you offer discounts for non-profits?',
 ];
 
 export const tasks = [
@@ -55,4 +121,66 @@ export const tasks = [
     icon: IconClipboardList,
     assignees: [{ name: 'NL', tone: 'from-slate-700 to-emerald-900' }],
   },
+];
+
+export const quickLinks = [
+  { label: 'Dashboard', href: '/', icon: IconDashboard },
+  { label: 'My Tasks', href: '/tasks', icon: IconListCheck },
+  { label: 'Team Settings', href: '/settings', icon: IconUsers },
+];
+
+export const features = [
+  {
+    title: 'Real-time Sync',
+    description:
+      'Your changes are propagated instantly across every device. No refresh, no lag, just seamless flow.',
+    icon: IconWifi,
+    tone: 'bg-[#e5f3ee] text-[#006e23]',
+  },
+  {
+    title: 'Smart Analytics',
+    description:
+      'Predictive workload analysis identifies bottlenecks before they happen. Data-driven decision making at its finest.',
+    icon: IconChartBar,
+    tone: 'bg-[#fff0e8] text-[#a64000]',
+  },
+  {
+    title: 'Team Collaboration',
+    description:
+      'Unified workspace for teams of all sizes. Comment, tag, and assign with logical precision.',
+    icon: IconUsersGroup,
+    tone: 'bg-[#e5f3ee] text-[#006e23]',
+  },
+];
+
+export const footerGroups = [
+  {
+    title: 'Product',
+    links: ['Features', 'Security', 'Enterprise'],
+  },
+  {
+    title: 'Support',
+    links: [
+      'Contact Support',
+      'Help Center',
+      'Privacy Policy',
+      'Terms of Service',
+    ],
+  },
+  {
+    title: 'Company',
+    links: ['About Us', 'Careers', 'Blog'],
+  },
+];
+
+export const footerColumns = [
+  { title: 'Product', links: ['Features', 'Integrations', 'API'] },
+  { title: 'Company', links: ['About Us', 'Support', 'Careers'] },
+  { title: 'Legal', links: ['Privacy', 'Terms', 'Security'] },
+];
+
+export const milestones = [
+  { label: 'Weekly Milestone', value: '94%', status: 'bg-[#00751d]' },
+  { label: 'Design Sprint', value: 'In Progress', status: 'bg-[#a64000]' },
+  { label: 'Backend Audit', value: 'Planned', status: 'bg-[#9a928b]' },
 ];

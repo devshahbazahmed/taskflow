@@ -20,7 +20,9 @@ export default function Tasks() {
       <section className="lg:pl-80">
         <header className="sticky top-0 z-10 border-b border-orange-200 bg-[#f8f9ff]/95 px-5 py-3 backdrop-blur md:px-10">
           <div className="mx-auto flex max-w-[1200px] items-center gap-4">
-            <Logo />
+            <div className="block lg:hidden">
+              <Logo />
+            </div>
 
             <label className="relative hidden w-full max-w-[400px] sm:block">
               <IconSearch className="pointer-events-none absolute left-4 top-1/2 size-6 -translate-y-1/2 text-[#3c281d]" />

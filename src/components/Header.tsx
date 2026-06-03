@@ -1,47 +1,56 @@
 'use client';
 import Link from 'next/link';
 import { Button } from './ui/button';
-import { motion } from 'motion/react';
+import { usePathname } from 'next/navigation';
+import { navLinks } from '../lib/constants';
 import Logo from './Logo';
 
 export default function Header() {
+  const pathname = usePathname();
+
   return (
-    <nav className="flex items-center justify-between px-5 py-2 bg-white shadow shadow-amber-100">
-      <Logo />
-      <div id="nav-links" className="flex items-center justify-center gap-10">
-        <Link href={'/'}>
-          <p className="font-semibold">Features</p>
-        </Link>
-        <Link href={'/'}>
-          <p className="font-semibold">Pricing</p>
-        </Link>
-        <Link href={'/'}>
-          <p className="font-semibold">Enterprise</p>
-        </Link>
-      </div>
-      <div id="cta" className="flex items-center justify-center gap-10">
-        <motion.div
-          id="login-btn"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <Button
-            className="cursor-pointer p-5 font-extrabold"
-            variant="secondary"
+    <header className="sticky top-0 z-40 border-b border-orange-100 bg-[#f7f9ff]/95 backdrop-blur">
+      <nav className="mx-auto flex h-[62px] max-w-[1480px] items-center justify-between px-4 sm:px-8">
+        <Logo />
+
+        <div className="hidden items-center gap-7 text-sm font-medium text-[#2f251f] md:flex">
+          {navLinks.map((link) => {
+            const active =
+              link.href === '/'
+                ? pathname === '/'
+                : pathname.startsWith(link.href);
+
+            return (
+              <Link
+                key={link.label}
+                href={link.href}
+                className={`border-b py-2 transition hover:text-[#a64000] ${
+                  active
+                    ? 'border-[#a64000] text-[#a64000]'
+                    : 'border-transparent'
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+        </div>
+
+        <div className="flex items-center gap-4">
+          <Link
+            href="/"
+            className="hidden text-sm font-semibold text-[#32170c] transition hover:text-[#a64000] sm:block"
           >
             Login
+          </Link>
+          <Button
+            asChild
+            className="h-9 rounded-[6px] bg-[#ff7114] px-5 text-sm font-extrabold text-white hover:bg-[#f06108]"
+          >
+            <Link href="/tasks">Get Started</Link>
           </Button>
-        </motion.div>
-        <motion.div
-          id="register-btn"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <Button className="cursor-pointer p-5 bg-amber-700 hover:bg-amber-600 font-extrabold">
-            Get Started
-          </Button>
-        </motion.div>
-      </div>
-    </nav>
+        </div>
+      </nav>
+    </header>
   );
 }

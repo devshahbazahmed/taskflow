@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="mt-auto flex flex-col gap-4 border-t border-orange-200 pt-3 text-sm text-[#3b2116] md:flex-row md:items-center md:justify-between">
+    <footer className="mt-auto flex flex-col gap-4 border-t border-orange-200 p-5 text-sm text-[#3b2116] md:flex-row md:items-center md:justify-between">
       <p>
         © 2026 TaskFlow Inc. System Status:{' '}
         <span className="font-extrabold text-emerald-700">Optimal</span>
