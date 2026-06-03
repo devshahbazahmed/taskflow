@@ -1,4 +1,5 @@
 import {
+  IconBolt,
   IconChartBar,
   IconClipboardList,
   IconDashboard,
@@ -7,6 +8,8 @@ import {
   IconListCheck,
   IconPaletteOff,
   IconSettings,
+  IconShield,
+  IconTrendingUp,
   IconUsers,
   IconUsersGroup,
   IconWifi,
@@ -183,4 +186,25 @@ export const milestones = [
   { label: 'Weekly Milestone', value: '94%', status: 'bg-[#00751d]' },
   { label: 'Design Sprint', value: 'In Progress', status: 'bg-[#a64000]' },
   { label: 'Backend Audit', value: 'Planned', status: 'bg-[#9a928b]' },
+];
+
+export const coreValues = [
+  {
+    title: 'Efficiency',
+    description:
+      'We build tools that minimize friction and maximize meaningful output for every team member.',
+    icon: IconBolt,
+  },
+  {
+    title: 'Security',
+    description:
+      'Your data is your most valuable asset. We guard it with enterprise-grade encryption and protocol.',
+    icon: IconShield,
+  },
+  {
+    title: 'Scale',
+    description:
+      'Whether you are a team of two or two thousand, TaskFlow grows alongside your ambitions.',
+    icon: IconTrendingUp,
+  },
 ];
