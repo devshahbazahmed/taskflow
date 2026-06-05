@@ -52,22 +52,6 @@ export default function Sidebar() {
           );
         })}
       </nav>
-
-      <div className="mt-auto rounded-xl border border-orange-200 bg-white p-5 shadow-sm">
-        <div className="flex items-center gap-3">
-          <div className="flex size-12 items-center justify-center rounded-full border-2 border-[#ff7114] bg-gradient-to-br from-sky-200 via-slate-700 to-orange-500 text-sm font-bold text-white">
-            AR
-          </div>
-          <div>
-            <p className="font-bold text-[#1f110b]">Alex Rivers</p>
-            <p className="text-sm text-[#3b2116]">Admin</p>
-          </div>
-        </div>
-        <button className="mt-6 flex w-full items-center justify-center gap-2 text-sm font-semibold text-[#a43700] transition hover:text-[#732400]">
-          <IconLogout className="size-4" />
-          Log Out
-        </button>
-      </div>
     </aside>
   );
 }

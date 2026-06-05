@@ -6,24 +6,74 @@ import {
   IconBell,
   IconHelpCircle,
   IconSearch,
-  IconX,
+  IconLoader,
 } from '@tabler/icons-react';
 import Logo from '@/components/Logo';
 import Footer from '@/components/Footer';
+import { createTask } from '@/lib/api';
+import { useRouter } from 'next/navigation';
 
 export default function CreateTask() {
+  const router = useRouter();
   const [taskTitle, setTaskTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [priority, setPriority] = useState('Normal');
-  const [dueDate, setDueDate] = useState('');
-  const [assignees, setAssignees] = useState([
-    { name: 'Alex Rivers', avatar: 'AR', tone: 'from-teal-500 to-cyan-700' },
-    { name: 'Maria Kim', avatar: 'MK', tone: 'from-slate-500 to-zinc-800' },
-  ]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
 
-  const handleRemoveAssignee = (index: number) => {
-    setAssignees(assignees.filter((_, i) => i !== index));
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!taskTitle.trim() || !description.trim()) {
+      setError('Please fill in both title and description');
+      return;
+    }
+
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      await createTask(taskTitle, description);
+      setSuccess(true);
+
+      // Redirect to tasks page after a short delay
+      setTimeout(() => {
+        router.push('/tasks');
+      }, 1000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to create task');
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+  if (success) {
+    return (
+      <main className="min-h-screen bg-[#f6f8ff] text-[#09142a] flex items-center justify-center">
+        <div className="text-center">
+          <div className="mb-4 flex justify-center">
+            <div className="rounded-full bg-emerald-100 p-4">
+              <svg
+                className="size-12 text-emerald-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+          </div>
+          <h2 className="text-2xl font-bold text-[#111b30]">Task Created!</h2>
+          <p className="mt-2 text-[#3b2116]">Redirecting to your tasks...</p>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-[#f6f8ff] text-[#09142a]">
@@ -59,133 +109,93 @@ export default function CreateTask() {
         <div className="mx-auto flex min-h-[calc(100vh-77px)] max-w-[1200px] flex-col px-5 py-10 md:px-10 lg:px-10">
           <section className="mb-10">
             <h2 className="text-4xl font-extrabold tracking-normal text-[#111b30] md:text-[40px]">
-              Create Workspace Task
+              Create New Task
             </h2>
             <p className="mt-3 text-xl text-[#3b2116]">
-              Set up your next milestone and assign it to the team roadmap.
+              Add a new task to your task list and start tracking it.
             </p>
           </section>
 
-          <section className="grid gap-7 xl:grid-cols-[1fr_380px]">
+          {error && (
+            <div className="mb-6 rounded-lg border border-red-300 bg-red-50 p-4 text-red-700">
+              {error}
+            </div>
+          )}
+
+          <form
+            onSubmit={handleSubmit}
+            className="grid gap-7 xl:grid-cols-[1fr_380px]"
+          >
             <div className="space-y-6">
               <div>
                 <label className="block text-base font-semibold text-[#111b30] mb-2">
-                  Task Title
+                  Task Title *
                 </label>
                 <input
                   type="text"
                   value={taskTitle}
                   onChange={(e) => setTaskTitle(e.target.value)}
-                  placeholder="e.g., Finalize Q3 Marketing Report"
+                  placeholder="e.g., Update API Authentication flow"
                   className="w-full h-[56px] rounded-xl border border-orange-200 bg-white px-5 py-3 text-lg text-[#09142a] outline-none transition placeholder:text-slate-400 focus:border-[#ff7114] focus:ring-4 focus:ring-orange-100"
+                  disabled={isLoading}
                 />
               </div>
               <div>
                 <label className="block text-base font-semibold text-[#111b30] mb-2">
-                  Detailed Description
+                  Detailed Description *
                 </label>
                 <textarea
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  placeholder="Provide context, goals, and necessary links..."
+                  placeholder="Provide context and details for this task..."
                   rows={6}
                   className="w-full rounded-xl border border-orange-200 bg-white px-5 py-3 text-lg text-[#09142a] outline-none transition placeholder:text-slate-400 focus:border-[#ff7114] focus:ring-4 focus:ring-orange-100 resize-none"
+                  disabled={isLoading}
                 />
-              </div>
-
-              <div>
-                <label className="block text-base font-semibold text-[#111b30] mb-3">
-                  Priority Level
-                </label>
-                <div className="flex flex-wrap gap-3">
-                  {['Urgent', 'Normal', 'Low'].map((level) => (
-                    <button
-                      key={level}
-                      onClick={() => setPriority(level)}
-                      className={`h-12 px-6 rounded-lg font-semibold transition ${
-                        priority === level
-                          ? level === 'Urgent'
-                            ? 'bg-orange-50 text-orange-600 border-2 border-orange-600'
-                            : level === 'Normal'
-                              ? 'bg-[#63f27b] text-emerald-800 border-2 border-emerald-600'
-                              : 'bg-blue-100 text-blue-700 border-2 border-blue-600'
-                          : 'bg-[#f4f7ff] text-[#3b2116] border-2 border-transparent hover:border-orange-200'
-                      }`}
-                    >
-                      {level === 'Urgent' && '⚡ '}
-                      {level}
-                    </button>
-                  ))}
-                </div>
               </div>
             </div>
 
             <div className="space-y-6">
               <div className="rounded-2xl border border-orange-200 bg-white p-6 shadow-sm">
                 <h3 className="text-lg font-extrabold text-[#111b30] mb-4">
-                  Deadlines
+                  Quick Info
                 </h3>
-                <label className="block text-sm font-medium text-[#3b2116] mb-2">
-                  DUE DATE
-                </label>
-                <div className="relative">
-                  <input
-                    type="date"
-                    value={dueDate}
-                    onChange={(e) => setDueDate(e.target.value)}
-                    className="w-full h-[44px] rounded-lg border border-orange-200 bg-white px-4 text-[#09142a] outline-none transition focus:border-[#ff7114] focus:ring-4 focus:ring-orange-100"
-                  />
+                <div className="space-y-3 text-sm text-[#3b2116]">
+                  <div className="flex items-start gap-2">
+                    <span className="mt-1">📌</span>
+                    <span>Tasks are saved to your database immediately.</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="mt-1">✓</span>
+                    <span>You can edit and delete tasks anytime.</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="mt-1">🔄</span>
+                    <span>Mark tasks as completed when done.</span>
+                  </div>
                 </div>
-                <p className="mt-3 text-sm text-[#3b2116] flex items-start gap-2">
-                  <span className="mt-1">ℹ️</span>
-                  <span>
-                    Setting a due date will automatically sync this task to the
-                    shared team calendar.
-                  </span>
-                </p>
-              </div>
-
-              <div className="rounded-2xl border border-orange-200 bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-extrabold text-[#111b30] mb-4">
-                  Collaborators
-                </h3>
-                <div className="flex items-center gap-3 mb-4">
-                  {assignees.map((assignee, index) => (
-                    <div key={index} className="relative group">
-                      <div
-                        className={`grid size-10 place-items-center rounded-full bg-gradient-to-br ${assignee.tone} text-xs font-bold text-white border-2 border-white shadow-sm`}
-                      >
-                        {assignee.avatar}
-                      </div>
-                      <button
-                        onClick={() => handleRemoveAssignee(index)}
-                        className="absolute -top-2 -right-2 bg-white rounded-full p-0.5 opacity-0 group-hover:opacity-100 transition shadow-md hover:bg-red-50"
-                      >
-                        <IconX className="size-3 text-red-600" />
-                      </button>
-                    </div>
-                  ))}
-                  {assignees.length < 5 && (
-                    <button className="size-10 rounded-full border-2 border-orange-200 flex items-center justify-center text-[#ff7114] font-bold hover:bg-orange-50 transition">
-                      +
-                    </button>
-                  )}
-                </div>
-                <button className="w-full h-11 rounded-lg border border-orange-200 text-[#ff7114] font-semibold transition hover:bg-orange-50">
-                  ➕ Manage Assignees
-                </button>
               </div>
             </div>
-          </section>
 
-          <section className="mt-10 flex flex-col sm:flex-row gap-4 justify-end">
-            <button className="h-12 px-8 rounded-lg border border-orange-200 text-[#3b2116] font-semibold transition hover:bg-orange-50">
-              Save as Draft
-            </button>
-            <button className="h-12 px-12 rounded-lg bg-[#ff7114] text-white font-semibold transition hover:bg-[#f06108] shadow-md">
-              Create Task
-            </button>
-          </section>
+            <section className="col-span-full mt-6 flex flex-col sm:flex-row gap-4 justify-end">
+              <button
+                type="button"
+                onClick={() => router.back()}
+                disabled={isLoading}
+                className="h-12 px-8 rounded-lg border border-orange-200 text-[#3b2116] font-semibold transition hover:bg-orange-50 disabled:opacity-50"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="h-12 px-12 rounded-lg bg-[#ff7114] text-white font-semibold transition hover:bg-[#f06108] shadow-md disabled:opacity-50 flex items-center justify-center gap-2"
+              >
+                {isLoading && <IconLoader className="size-5 animate-spin" />}
+                {isLoading ? 'Creating...' : 'Create Task'}
+              </button>
+            </section>
+          </form>
 
           <Footer />
         </div>

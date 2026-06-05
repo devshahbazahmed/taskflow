@@ -7,7 +7,6 @@ import {
   IconHome,
   IconListCheck,
   IconPaletteOff,
-  IconSettings,
   IconShield,
   IconTrendingUp,
   IconUsers,
@@ -19,7 +18,6 @@ export const sideNaveItems = [
   { label: 'Home', icon: IconHome, href: '/' },
   { label: 'Tasks', icon: IconClipboardList, active: true, href: '/tasks' },
   { label: 'Analytics', icon: IconChartBar, href: '/analytics' },
-  { label: 'Settings', icon: IconSettings, href: '/settings' },
 ];
 
 export const navLinks = [
