@@ -110,49 +110,6 @@ export default function Home() {
                   <span>75%</span>
                 </div>
               </div>
-
-              <div className="rounded-[8px] border border-orange-200 bg-white p-5 shadow-sm">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="flex size-11 items-center justify-center rounded-[6px] bg-[#e5f3ee] text-[#006e23]">
-                      <IconGauge className="size-5" strokeWidth={1.9} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-medium">Efficiency Score</p>
-                      <p className="text-lg font-black text-[#006e23]">98.2%</p>
-                    </div>
-                  </div>
-                  <IconChevronRight className="size-5" strokeWidth={1.8} />
-                </div>
-              </div>
-            </div>
-
-            <div className="grid gap-4 sm:grid-rows-[210px_1fr]">
-              <div className="rounded-[8px] bg-[#ff7114] p-6 text-[#2a1308] shadow-sm shadow-orange-200">
-                <IconClipboardCheck className="size-8" strokeWidth={1.9} />
-                <p className="mt-20 text-3xl font-black">124</p>
-                <p className="text-sm font-bold">Tasks Done</p>
-              </div>
-
-              <div className="rounded-[8px] border border-[#e5eee8] bg-[#f6fffb] p-5">
-                <div className="flex items-center gap-2 text-xs font-bold">
-                  <span className="size-2 rounded-full bg-[#ff7114]" />
-                  Active Now
-                </div>
-                <div className="mt-6 flex items-center">
-                  {['#d9e7ff', '#c7dcff', '#b6d2ff', '#006e23'].map(
-                    (color, index) => (
-                      <div
-                        key={color}
-                        className="-ml-2 flex size-8 items-center justify-center rounded-full border-2 border-[#f6fffb] text-[9px] font-black text-white first:ml-0"
-                        style={{ backgroundColor: color }}
-                      >
-                        {index === 3 ? '+5' : ''}
-                      </div>
-                    )
-                  )}
-                </div>
-              </div>
             </div>
           </div>
         </div>
