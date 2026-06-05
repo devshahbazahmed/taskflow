@@ -1,16 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { fetchTasks } from '@/lib/api';
-
-interface Task {
-  id: string;
-  title: string;
-  description: string;
-  completed: boolean;
-  createdAt: string;
-  updatedAt: string;
-}
+import { fetchTasks } from '@/actions/tasks';
+import { Task } from '../types';
 
 export function useTasks() {
   const [tasks, setTasks] = useState<Task[]>([]);

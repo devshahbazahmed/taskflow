@@ -10,7 +10,7 @@ import {
 } from '@tabler/icons-react';
 import Logo from '@/components/Logo';
 import Footer from '@/components/Footer';
-import { createTask } from '@/lib/api';
+import { createTask } from '@/actions/tasks';
 import { useRouter } from 'next/navigation';
 
 export default function CreateTask() {

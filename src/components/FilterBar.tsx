@@ -2,17 +2,8 @@
 
 import { IconChevronDown } from '@tabler/icons-react';
 import { useState, useRef, useEffect } from 'react';
-
-type SortOption = 'newest' | 'oldest' | 'title' | 'status';
-type StatusFilter = 'all' | 'completed' | 'pending';
-
-interface FilterBarProps {
-  statusFilter: StatusFilter;
-  onStatusChange: (status: StatusFilter) => void;
-  sortBy: SortOption;
-  onSortChange: (sort: SortOption) => void;
-  resultCount?: number;
-}
+import { FilterBarProps } from '@/types';
+import { sortOptions } from '@/lib/constants';
 
 export default function FilterBar({
   statusFilter,
@@ -34,13 +25,6 @@ export default function FilterBar({
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
-
-  const sortOptions: { value: SortOption; label: string }[] = [
-    { value: 'newest', label: '🕐 Newest First' },
-    { value: 'oldest', label: '🕑 Oldest First' },
-    { value: 'title', label: '📝 Sort by Title' },
-    { value: 'status', label: '✓ Sort by Status' },
-  ];
 
   return (
     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">

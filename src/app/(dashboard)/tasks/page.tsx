@@ -12,8 +12,8 @@ import Logo from '@/components/Logo';
 import TaskCard from '@/components/TaskCard';
 import SearchBar from '@/components/SearchBar';
 import FilterBar from '@/components/FilterBar';
-import { useTasks } from '@/lib/hooks/useTasks';
-import { useTaskSearch } from '@/lib/hooks/useTaskSearch';
+import { useTasks } from '@/hooks/useTasks';
+import { useTaskSearch } from '@/hooks/useTaskSearch';
 import Link from 'next/link';
 
 export default function Tasks() {

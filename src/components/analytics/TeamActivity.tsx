@@ -1,16 +1,6 @@
 'use client';
 
-interface ActivityItem {
-  id: string;
-  user: string;
-  action: string;
-  timestamp: string;
-  icon: string;
-  badge?: {
-    label: string;
-    type: 'success' | 'warning' | 'error';
-  };
-}
+import { ActivityItem } from '@/types';
 
 const activities: ActivityItem[] = [
   {

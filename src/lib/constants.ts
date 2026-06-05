@@ -13,6 +13,7 @@ import {
   IconUsersGroup,
   IconWifi,
 } from '@tabler/icons-react';
+import { SortOption } from '@/types';
 
 export const sideNaveItems = [
   { label: 'Home', icon: IconHome, href: '/' },
@@ -205,4 +206,22 @@ export const coreValues = [
       'Whether you are a team of two or two thousand, TaskFlow grows alongside your ambitions.',
     icon: IconTrendingUp,
   },
+];
+
+export const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+export const data = [
+  { completed: 60, inProgress: 30 },
+  { completed: 40, inProgress: 55 },
+  { completed: 20, inProgress: 75 },
+  { completed: 50, inProgress: 40 },
+  { completed: 30, inProgress: 65 },
+  { completed: 15, inProgress: 25 },
+  { completed: 10, inProgress: 15 },
+];
+
+export const sortOptions: { value: SortOption; label: string }[] = [
+  { value: 'newest', label: '🕐 Newest First' },
+  { value: 'oldest', label: '🕑 Oldest First' },
+  { value: 'title', label: '📝 Sort by Title' },
+  { value: 'status', label: '✓ Sort by Status' },
 ];

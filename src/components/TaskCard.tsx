@@ -1,19 +1,10 @@
 'use client';
 
 import { IconTrash, IconCheck } from '@tabler/icons-react';
-import { deleteTask, updateTask } from '@/lib/api';
+import { deleteTask, updateTask } from '@/actions/tasks';
 import { useState } from 'react';
 import HighlightText from '@/components/HighlightText';
-
-interface TaskCardProps {
-  id: string;
-  title: string;
-  description: string;
-  completed: boolean;
-  onTaskDeleted: (id: string) => void;
-  onTaskUpdated: (id: string, completed: boolean) => void;
-  searchQuery?: string;
-}
+import { TaskCardProps } from '@/types';
 
 export default function TaskCard({
   id,

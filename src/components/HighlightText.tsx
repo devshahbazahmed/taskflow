@@ -1,12 +1,7 @@
 'use client';
 
-import { getHighlightSegments } from '@/lib/utils/search';
-
-interface HighlightTextProps {
-  text: string;
-  query?: string;
-  className?: string;
-}
+import { getHighlightSegments } from '@/utils/search';
+import { HighlightTextProps } from '@/types';
 
 export default function HighlightText({
   text,

@@ -1,19 +1,6 @@
 'use server';
 
-interface Task {
-  id: string;
-  title: string;
-  description: string;
-  completed: boolean;
-  createdAt: string;
-  updatedAt: string;
-}
-
-interface ApiResponse<T> {
-  success: boolean;
-  data?: T;
-  error?: string;
-}
+import { ApiResponse, Task } from '@/types';
 
 const API_BASE_URL = '/api';
 

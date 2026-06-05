@@ -1,19 +1,7 @@
 'use client';
 
 import HighlightText from '@/components/HighlightText';
-
-interface SearchResult {
-  id: string;
-  title: string;
-  description: string;
-  completed: boolean;
-}
-
-interface SearchResultsProps {
-  results: SearchResult[];
-  searchQuery: string;
-  isVisible: boolean;
-}
+import { SearchResultsProps } from '@/types';
 
 export default function SearchResults({
   results,

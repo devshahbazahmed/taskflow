@@ -1,20 +1,8 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import {
-  searchTasks,
-  filterTasksByStatus,
-  sortTasks,
-} from '@/lib/utils/search';
-
-interface Task {
-  id: string;
-  title: string;
-  description: string;
-  completed: boolean;
-  createdAt: string;
-  updatedAt: string;
-}
+import { searchTasks, filterTasksByStatus, sortTasks } from '@/utils/search';
+import { Task } from '../types';
 
 type SortOption = 'newest' | 'oldest' | 'title' | 'status';
 type StatusFilter = 'all' | 'completed' | 'pending';

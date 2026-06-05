@@ -1,17 +1,8 @@
 'use client';
 
-export default function CompletionChart() {
-  const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  const data = [
-    { completed: 60, inProgress: 30 },
-    { completed: 40, inProgress: 55 },
-    { completed: 20, inProgress: 75 },
-    { completed: 50, inProgress: 40 },
-    { completed: 30, inProgress: 65 },
-    { completed: 15, inProgress: 25 },
-    { completed: 10, inProgress: 15 },
-  ];
+import { data, days } from '@/lib/constants';
 
+export default function CompletionChart() {
   return (
     <div className="flex flex-col gap-6 rounded-xl border border-orange-100 bg-white p-6 shadow-sm md:col-span-4 lg:col-span-4 bento-hover">
       <div className="flex flex-col gap-1">
