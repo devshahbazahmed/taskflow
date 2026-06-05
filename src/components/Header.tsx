@@ -37,12 +37,6 @@ export default function Header() {
         </div>
 
         <div className="flex items-center gap-4">
-          <Link
-            href="/"
-            className="hidden text-sm font-semibold text-[#32170c] transition hover:text-[#a64000] sm:block"
-          >
-            Login
-          </Link>
           <Button
             asChild
             className="h-9 rounded-[6px] bg-[#ff7114] px-5 text-sm font-extrabold text-white hover:bg-[#f06108]"

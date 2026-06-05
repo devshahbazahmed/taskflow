@@ -1,5 +1,5 @@
 'use client';
-import { IconCirclePlus, IconLogout } from '@tabler/icons-react';
+import { IconCirclePlus } from '@tabler/icons-react';
 import { sideNaveItems } from '@/lib/constants';
 import Logo from './Logo';
 import { Button } from './ui/button';
@@ -23,7 +23,7 @@ export default function Sidebar() {
       {pathname !== '/tasks/create' ? (
         <Button
           onClick={() => router.push('/tasks/create')}
-          className="mt-8 flex h-[60px] w-full items-center justify-center gap-3 rounded-xl bg-[#ff7114] text-lg font-semibold text-[#2d1508] shadow-sm transition hover:bg-[#f06108] cursor-pointer"
+          className="mt-8 flex h-15 w-full items-center justify-center gap-3 rounded-xl bg-[#ff7114] text-lg font-semibold text-[#2d1508] shadow-sm transition hover:bg-[#f06108] cursor-pointer"
         >
           <IconCirclePlus className="size-6" />
           New Task
@@ -35,13 +35,14 @@ export default function Sidebar() {
       <nav className="mt-8 space-y-3">
         {sideNaveItems.map((item) => {
           const Icon = item.icon;
+          const isActive = pathname.startsWith(item.href) && item.href !== '/';
 
           return (
             <Link
               href={item.href}
               key={item.label}
               className={`flex h-12 w-full items-center gap-3 rounded-lg px-6 text-left text-lg font-semibold transition ${
-                item.active
+                isActive
                   ? 'bg-[#ff7114] text-[#291308]'
                   : 'text-[#3b2116] hover:bg-white/70 bg-[#edf4ff]'
               }`}
