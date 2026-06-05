@@ -1,4 +1,4 @@
-// API utility functions for task management
+'use server';
 
 interface Task {
   id: string;

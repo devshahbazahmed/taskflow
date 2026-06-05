@@ -1,7 +1,3 @@
-/**
- * Search utility functions for task filtering
- */
-
 export interface Task {
   id: string;
   title: string;
@@ -11,9 +7,6 @@ export interface Task {
   updatedAt: string;
 }
 
-/**
- * Escape special regex characters in search query
- */
 const escapeRegExp = (string: string): string => {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 };
