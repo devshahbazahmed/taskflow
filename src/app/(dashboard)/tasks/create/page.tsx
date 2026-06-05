@@ -67,9 +67,7 @@ export default function CreateTask() {
           </section>
 
           <section className="grid gap-7 xl:grid-cols-[1fr_380px]">
-            {/* Main Form Section */}
             <div className="space-y-6">
-              {/* Task Title */}
               <div>
                 <label className="block text-base font-semibold text-[#111b30] mb-2">
                   Task Title
@@ -82,8 +80,6 @@ export default function CreateTask() {
                   className="w-full h-[56px] rounded-xl border border-orange-200 bg-white px-5 py-3 text-lg text-[#09142a] outline-none transition placeholder:text-slate-400 focus:border-[#ff7114] focus:ring-4 focus:ring-orange-100"
                 />
               </div>
-
-              {/* Detailed Description */}
               <div>
                 <label className="block text-base font-semibold text-[#111b30] mb-2">
                   Detailed Description
@@ -97,7 +93,6 @@ export default function CreateTask() {
                 />
               </div>
 
-              {/* Priority Level */}
               <div>
                 <label className="block text-base font-semibold text-[#111b30] mb-3">
                   Priority Level
@@ -125,9 +120,7 @@ export default function CreateTask() {
               </div>
             </div>
 
-            {/* Sidebar Section */}
             <div className="space-y-6">
-              {/* Deadlines */}
               <div className="rounded-2xl border border-orange-200 bg-white p-6 shadow-sm">
                 <h3 className="text-lg font-extrabold text-[#111b30] mb-4">
                   Deadlines
@@ -152,7 +145,6 @@ export default function CreateTask() {
                 </p>
               </div>
 
-              {/* Collaborators */}
               <div className="rounded-2xl border border-orange-200 bg-white p-6 shadow-sm">
                 <h3 className="text-lg font-extrabold text-[#111b30] mb-4">
                   Collaborators
@@ -186,7 +178,6 @@ export default function CreateTask() {
             </div>
           </section>
 
-          {/* Action Buttons */}
           <section className="mt-10 flex flex-col sm:flex-row gap-4 justify-end">
             <button className="h-12 px-8 rounded-lg border border-orange-200 text-[#3b2116] font-semibold transition hover:bg-orange-50">
               Save as Draft
